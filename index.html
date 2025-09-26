@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PM Canvas - FitWis Marketing Digital</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .page-break { page-break-after: always; }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 15px;
+            background-color: #ffffff;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        .canvas-container {
+            background: linear-gradient(135deg, #ff7b00, #ff9500);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .header-info {
+            text-align: right;
+            font-size: 12px;
+        }
+        
+        .team-box {
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin: 0 auto 12px auto;
+            max-width: 260px;
+            text-align: left;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        .team-box h3 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .team-box ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 11px;
+            line-height: 1.6;
+            color: #444;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .content-section h2 {
+            color: #ff7b00;
+            margin-bottom: 15px;
+            font-size: 16px;
+            margin-top: 0;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+            font-size: 12px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .swot-item {
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid;
+        }
+        
+        .swot-item h3 {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .swot-item ul {
+            margin: 0;
+            padding-left: 15px;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .strengths {
+            background: #e8f5e8;
+            border-color: #4CAF50;
+        }
+        
+        .strengths h3 { color: #2E7D32; }
+        
+        .weaknesses {
+            background: #fff3e0;
+            border-color: #FF9800;
+        }
+        
+        .weaknesses h3 { color: #E65100; }
+        
+        .opportunities {
+            background: #e3f2fd;
+            border-color: #2196F3;
+        }
+        
+        .opportunities h3 { color: #1565C0; }
+        
+        .threats {
+            background: #ffebee;
+            border-color: #F44336;
+        }
+        
+        .threats h3 { color: #C62828; }
+        
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .scope-grid h3 {
+            color: #333;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .scope-grid ul {
+            font-size: 11px;
+            line-height: 1.5;
+            margin: 0;
+            padding-left: 18px;
+        }
+        
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .canvas-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .canvas-item h3 {
+            margin: 0 0 8px 0;
+            font-size: 11px;
+            color: #333;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        .canvas-item ul {
+            margin: 0;
+            padding-left: 12px;
+            font-size: 10px;
+            line-height: 1.3;
+        }
+        
+        .canvas-item li {
+            margin-bottom: 3px;
+        }
+        
+        .small-text {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .pitch-gp {
+            grid-column: span 2;
+            background: #fff3e6;
+            border: 2px solid #ff7b00;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+        }
+        
+        .pitch-gp h2 {
+            color: #ff7b00;
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+        
+        .pitch-gp h3 {
+            color: #ff7b00;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        
+        .pitch-content {
+            font-size: 10px;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        .pitch-content div {
+            padding: 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .value-highlight {
+            background: #ffe6cc;
+            padding: 6px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #d2691e;
+            font-size: 10px;
+        }
+        
+        .objective-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #ff7b00;
+        }
+        
+        .evidence-section {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #4CAF50;
+        }
+        
+        .evidence-section h2 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .evidence-section p {
+            margin-bottom: 10px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        
+        .instagram-link {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #4CAF50;
+        }
+        
+        .instagram-link a {
+            color: #1565C0;
+            text-decoration: none;
+            margin-left: 8px;
+        }
+        
+        .restrictions {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-container">
+        <div class="header">
+            <h1>Projeto: Marketing Digital FitWis</h1>
+            <div class="header-info">
+                <div style="margin-bottom:8px; font-weight:bold; color:#fff;">Disciplina: Gerenciamento de Projetos</div>
+                <div class="team-box">
+                    <h3>👥 Equipe do Projeto</h3>
+                    <ul>
+                        <li>Suellen Oliveira de Lima Castro</li>
+                        <li>Ryssa Teles Esmeraldo Sobreira</li>
+                        <li>Ana Beatriz de Lima Silva</li>
+                        <li>Vitor Marden Almeida Nunes</li>
+                        <li>Thamires Guedes Moura Lopes</li>
+                        <li>Karla Nayara Barros Sátiro (2326817)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>JUSTIFICATIVA DO PROJETO</h2>
+            <p>
+                O Instagram concentra 74% do público fitness brasileiro (18-35 anos), sendo a plataforma mais efetiva para marcas de roupas esportivas. A FitWis pode começar sua presença digital de forma econômica e estratégica, utilizando ferramentas gratuitas e recursos próprios. Com investimento mínimo de R$ 1.000, é possível criar uma base sólida que gere retorno imediato e valide a estratégia digital antes de investimentos maiores.
+            </p>
+            
+            <h2>ANÁLISE SWOT - FITWIS</h2>
+            <div class="swot-grid">
+                <div class="swot-item strengths">
+                    <h3>FORÇAS</h3>
+                    <ul>
+                        <li>Produto especializado em shorts fitness</li>
+                        <li>Qualidade reconhecida dos produtos</li>
+                        <li>Preços acessíveis ao público jovem</li>
+                        <li>Produtos photogênicos para Instagram</li>
+                        <li>Equipe interna motivada</li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item weaknesses">
+                    <h3>FRAQUEZAS</h3>
+                    <ul>
+                        <li>Ausência total no Instagram</li>
+                        <li>Falta de identidade visual digital</li>
+                        <li>Zero engajamento online</li>
+                        <li>Orçamento limitado para marketing</li>
+                        <li>Inexperiência com redes sociais</li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item opportunities">
+                    <h3>OPORTUNIDADES</h3>
+                    <ul>
+                        <li>Instagram é líder no segmento fitness</li>
+                        <li>Ferramentas gratuitas disponíveis</li>
+                        <li>Baixa concorrência local no Instagram</li>
+                        <li>Crescimento orgânico possível</li>
+                        <li>Validação com baixo investimento</li>
+                    </ul>
+                </div>
+                
+                <div class="swot-item threats">
+                    <h3>AMEAÇAS</h3>
+                    <ul>
+                        <li>Algoritmo Instagram em constante mudança</li>
+                        <li>Marcas grandes já estabelecidas</li>
+                        <li>Necessidade de conteúdo constante</li>
+                        <li>Crescimento orgânico mais lento</li>
+                        <li>Dependência de qualidade do conteúdo</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>ESCOPO DETALHADO DO PROJETO</h2>
+            <div class="scope-grid">
+                <div>
+                    <h3>INCLUÍDO NO ESCOPO:</h3>
+                    <ul>
+                        <li>Criação de perfil Instagram Business</li>
+                        <li>Logo simples e identidade básica</li>
+                        <li>20 posts de conteúdo inicial</li>
+                        <li>Configuração básica do Instagram Shop</li>
+                        <li>Estratégia de hashtags</li>
+                        <li>Templates para stories</li>
+                        <li>Guia básico de postagens</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3>EXCLUÍDO DO ESCOPO:</h3>
+                    <ul>
+                        <li>Outras redes sociais</li>
+                        <li>Anúncios pagos</li>
+                        <li>Parcerias com influenciadores</li>
+                        <li>Produção profissional de vídeos</li>
+                        <li>Gestão contínua de conteúdo</li>
+                        <li>Ferramentas pagas de agendamento</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="objective-box">
+                <strong style="color: #ff7b00;">Objetivo Principal:</strong> Criar presença inicial da FitWis no Instagram com perfil otimizado, alcançando 500 seguidores e 10% de taxa de engajamento em 1 mês, validando estratégia digital com investimento mínimo de R$ 1.000.
+            </div>
+        </div>
+
+        <div class="canvas-grid">
+            <div class="canvas-item">
+                <h3>💬 JUSTIFICATIVAS</h3>
+                <div class="small-text">Passado</div>
+                <ul>
+                    <li>Instagram concentra 74% do público fitness</li>
+                    <li>60% das compras fitness via Instagram</li>
+                    <li>FitWis ausente na principal plataforma</li>
+                    <li>Baixo custo comparado a outras estratégias</li>
+                    <li>ROI comprovado no segmento fitness</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>📦 PRODUTO</h3>
+                <div class="small-text">Externos &</div>
+                <ul>
+                    <li>Perfil Instagram Business otimizado</li>
+                    <li>Identidade visual para Instagram</li>
+                    <li>40 posts de conteúdo estratégico</li>
+                    <li>Instagram Shop configurado</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>👥 STAKEHOLDERS</h3>
+                <div class="small-text">Externos & Fatores Externos</div>
+                <ul>
+                    <li>Proprietários da FitWis</li>
+                    <li>Equipe de marketing interna</li>
+                    <li>Clientes atuais e potenciais</li>
+                    <li>Influenciadores fitness</li>
+                    <li>Agência de marketing digital</li>
+                    <li>Fornecedores de conteúdo</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>☁️ PREMISSAS</h3>
+                <ul>
+                    <li>Equipe disponível para treinamento</li>
+                    <li>Orçamento aprovado conforme planejado</li>
+                    <li>Acesso aos produtos para fotografia</li>
+                    <li>Mercado receptivo à marca</li>
+                    <li>Plataformas digitais estáveis</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>🔒 RISCOS</h3>
+                <ul>
+                    <li>Baixo engajamento inicial (40%)</li>
+                    <li>Atraso na produção de conteúdo (30%)</li>
+                    <li>Comentários negativos (20%)</li>
+                    <li>Mudanças nos algoritmos (25%)</li>
+                    <li>Concorrência agressiva (35%)</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>🎯 OBJ SMART</h3>
+                <ul>
+                    <li>Alcançar 500 seguidores em 1 mês</li>
+                    <li>Taxa de engajamento de 10%</li>
+                    <li>20 posts de qualidade publicados</li>
+                    <li>Instagram Shop configurado</li>
+                    <li>Base sólida para crescimento orgânico</li>
+                </ul>
+            </div>
+
+            <div class="pitch-gp">
+                <h2>GP Instagram FitWis</h2>
+                <h3>PITCH Projeto Piloto Instagram</h3>
+                <div class="pitch-content">
+                    <div style="background: #e6f3ff; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+                        <strong>Problema:</strong> FitWis não possui presença no Instagram com orçamento limitado para marketing
+                    </div>
+                    <div style="background: #e6ffe6; padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+                        <strong>Solução:</strong> Projeto piloto focado no essencial: perfil profissional + conteúdo básico + Instagram Shop
+                    </div>
+                    <div style="background: #fff0e6; padding: 8px; border-radius: 4px;">
+                        <strong>Diferencial:</strong> Validação da estratégia digital com investimento mínimo e máximo aproveitamento de recursos gratuitos
+                    </div>
+                </div>
+                <div class="value-highlight">
+                    <strong>Entrega - Valor:</strong> R$ 1.000<br/>
+                    <strong>Entrega - Prazo:</strong> 1 mês
+                </div>
+            </div>
+
+            <div class="canvas-item">
+                <h3>📋 REQUISITOS</h3>
+                <ul>
+                    <li>Orçamento de R$ 1.000</li>
+                    <li>Dedicação de 5h semanais da equipe</li>
+                    <li>Produtos disponíveis para fotografia</li>
+                    <li>Celular com boa câmera</li>
+                    <li>Acesso às informações dos produtos</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>👥 EQUIPE</h3>
+                <ul>
+                    <li>Gestor do projeto (interno)</li>
+                    <li>Designer freelancer (logo básico)</li>
+                    <li>Fotógrafo freelancer (1 dia)</li>
+                    <li>Equipe interna (conteúdo)</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>📈 BENEFÍCIOS</h3>
+                <div class="small-text">Futuro</div>
+                <ul>
+                    <li>Aumento do faturamento</li>
+                    <li>Expansão da base de clientes</li>
+                    <li>Melhoria do reconhecimento da marca</li>
+                    <li>Redução do custo de aquisição</li>
+                    <li>Feedback direto dos consumidores</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>📦 GRUPOS DE ENTREGAS</h3>
+                <ul>
+                    <li>Setup básico: Perfil + bio otimizada</li>
+                    <li>Identidade: Logo simples + cores</li>
+                    <li>Conteúdo: 20 posts iniciais</li>
+                    <li>Instagram Shop: Configuração básica</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>⏱️ LINHA DO TEMPO</h3>
+                <div class="small-text">Entrega - Prazo:</div>
+                <ul>
+                    <li>Sem 1: Setup perfil + logo</li>
+                    <li>Sem 2: Fotografia + templates</li>
+                    <li>Sem 3: Produção de 20 posts</li>
+                    <li>Sem 4: Instagram Shop + lançamento</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item restrictions">
+                <h3>🚫 RESTRIÇÕES</h3>
+                <ul>
+                    <li>Orçamento máximo: R$ 1.000 | Prazo fixo: 1 mês | Recursos humanos limitados</li>
+                    <li>Uso prioritário de ferramentas gratuitas e recursos internos disponíveis</li>
+                    <li>Aprovação obrigatória de conteúdo pela diretoria antes da publicação</li>
+                </ul>
+            </div>
+
+            <div class="canvas-item">
+                <h3>💰 CUSTOS</h3>
+                <div class="small-text">Entrega - Valor R$</div>
+                <ul>
+                    <li>Logo básico: R$ 200</li>
+                    <li>Fotografia produtos: R$ 300</li>
+                    <li>Templates/design: R$ 150</li>
+                    <li>Apps/ferramentas: R$ 100</li>
+                    <li>Consultoria setup: R$ 250</li>
+                </ul>
+                <div class="value-highlight">Total: R$ 1.000</div>
+            </div>
+        </div>
+
+        <div class="evidence-section">
+            <h2>📱 EVIDÊNCIA DE IMPLEMENTAÇÃO</h2>
+            <p>
+                Como demonstração prática da viabilidade do projeto, o perfil da FitWis já foi criado no Instagram:
+            </p>
+            <div class="instagram-link">
+                <strong>Instagram FitWis:</strong>
+                <a href="https://www.instagram.com/fitwisport?igsh=MXB0aDJ5aWkxdHE4YQ==" target="_blank">
+                    @fitwisport
+                </a>
+                <div style="font-size: 10px; color: #666; margin-top: 5px;">
+                    URL: https://www.instagram.com/fitwisport?igsh=MXB0aDJ5aWkxdHE4YQ==
+                </div>
+            </div>
+            <p style="margin-top: 10px; font-size: 11px; color: #555; font-style: italic;">
+                Este perfil demonstra que o projeto é totalmente executável e já está em fase inicial de implementação.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Função para gerar PDF
+        function generatePDF() {
+            window.print();
+        }
+        
+        // Adicionar botão de download se necessário
+        document.addEventListener('DOMContentLoaded', function() {
+            const button = document.createElement('button');
+            button.innerHTML = 'Gerar PDF';
+            button.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #ff7b00;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                z-index: 1000;
+            `;
+            button.onclick = generatePDF;
+            document.body.appendChild(button);
+        });
+    </script>
+</body>
+</html>
